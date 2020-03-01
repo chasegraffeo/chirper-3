@@ -18,19 +18,48 @@ class App extends React.Component {
     });
   };
 
+  
+  componentDidMount() {
+    const chirps = [
+      {
+        username: "chase",
+        message: "Whats Up?"
+      },
+      {
+        username: "Liam",
+        message: "Sup?"
+      },
+      {
+        username: "Tanner",
+        message: "Code God!!"
+      }
+    ];
+    setTimeout(() => {
+      this.setState({ chirps });
+    }, 2000);
+  }
+
   render() {
-    return (
-      <Container as="main">
-        <Row className="mt-2">
-          <Col md={5}>
-            <ChirpForms handleChirpSubmit={this.handleChirpSubmit} />
-          </Col>
-          <Col md={7}>
-            <ChirpTimeline chirps={this.state.chirps} />
-          </Col>
-        </Row>
-      </Container>
-    );
+    if (this.state.chirps.length === 0) {
+      return (
+        <h1 className="text-center mt-5">
+           <Spinner animation="border" variant="primary" style={{height: "100px", width: "100px"}} />
+        </h1>
+      )
+    } else {
+      return (
+        <Container as="main">
+          <Row className="mt-2">
+            <Col md={5}>
+              <ChirpForms handleChirpSubmit={this.handleChirpSubmit} />
+            </Col>
+            <Col md={7}>
+              <ChirpTimeline chirps={this.state.chirps} />
+            </Col>
+          </Row>
+        </Container>
+      );
+    }
   }
 }
 
