@@ -19,25 +19,15 @@ class App extends React.Component {
     });
   };
 
-  
-  componentDidMount() {
-    const chirps = [
-      {
-        username: "chase",
-        message: "Whats Up?"
-      },
-      {
-        username: "Liam",
-        message: "Sup?"
-      },
-      {
-        username: "Tanner",
-        message: "Code God!!"
-      }
-    ];
-    setTimeout(() => {
-      this.setState({ chirps });
-    }, 2000);
+
+  componentDidMount() {   
+     let test =localStorage.getItem('chirps');
+     let demChirps = JSON.parse(test)
+     setTimeout(() => {
+      this.setState({ chirps:demChirps });
+      }, 2000);
+    
+
   }
 
   render() {
@@ -65,3 +55,4 @@ class App extends React.Component {
 }
 
 export default App;
+
