@@ -19,13 +19,15 @@ class App extends React.Component {
     });
   };
 
+
   componentDidMount() {   
      let test =localStorage.getItem('chirps');
      let demChirps = JSON.parse(test)
      setTimeout(() => {
-       this.setState({ chirps:demChirps });
-     }, 2000);
+      this.setState({ chirps:demChirps });
+      }, 2000);
     
+
   }
 
   render() {
