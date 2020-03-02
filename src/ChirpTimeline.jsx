@@ -1,15 +1,16 @@
 import React from "react";
-import ListGroup from "react-bootstrap/ListGroup";
-import ChirpListItem from "./ChirpListItem";
+
+import ChirpCard from "./ChirpCard";
+
 
 
 const ChirpTimeline = props => {
     return(
-  <ListGroup variant="flush">
-    {props.chirps.map((chirp, i) => (
-      <ChirpListItem key={`chirp-item-${i}`} chirp={chirp} />
+      <>
+    {props.chirps.reverse().map((chirp, i) => (
+      <ChirpCard key={`chirp-item-${i}`} chirp={chirp} />
     ))}
-  </ListGroup>
+    </>  
     );
 };
 

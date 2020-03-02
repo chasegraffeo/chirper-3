@@ -14,8 +14,11 @@ class App extends React.Component {
   
 
   handleChirpSubmit = chirp => {
+    const newChirps = [...this.state.chirps, chirp];
+    const data = JSON.stringify(newChirps);
+    localStorage.setItem('chirps', data)
     this.setState({
-      chirps: [...this.state.chirps, chirp]
+      chirps: newChirps
     });
   };
 
@@ -26,6 +29,8 @@ class App extends React.Component {
      setTimeout(() => {
       this.setState({ chirps:demChirps });
       }, 2000);
+
+      
     
 
   }
@@ -40,14 +45,16 @@ class App extends React.Component {
     } else {
       return (
         <Container as="main">
-          <Row className="mt-2">
-            <Col md={5}>
+          <Row className="justify-content-center mt-2">
+            <Col md={6}>
               <ChirpForms handleChirpSubmit={this.handleChirpSubmit} />
             </Col>
-            <Col md={7}>
-              <ChirpTimeline chirps={this.state.chirps} />
-            </Col>
           </Row>
+          <Row className="justify-content-center mt-2">
+            
+              <ChirpTimeline chirps={this.state.chirps} />
+           
+            </Row>
         </Container>
       );
     }
