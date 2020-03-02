@@ -32,11 +32,22 @@ class App extends React.Component {
       {
         username: "Tanner",
         message: "Code God!!"
-      }
+      },
+      
+      
     ];
+    
+    let data = JSON.stringify(chirps);
+    localStorage.setItem('chirps', data);
+    
+    let test = localStorage.getItem('chirps');
+    let demChirps = JSON.parse(test)
+    
     setTimeout(() => {
-      this.setState({ chirps });
-    }, 2000);
+      this.setState({ chirps: demChirps });
+      }, 2000);
+
+    
   }
 
   render() {
