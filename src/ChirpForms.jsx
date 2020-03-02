@@ -25,7 +25,7 @@ class ChirpForms extends React.Component {
 
   render() {
     return (
-      <Form classname="form-group p-3 shadow-lrg">
+      <Form className="form-group p-3 shadow-lrg">
         <Form.Label>Username</Form.Label>
         <Form.Control
           value={this.state.username}
