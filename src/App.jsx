@@ -14,11 +14,14 @@ class App extends React.Component {
   
 
   handleChirpSubmit = chirp => {
+    const newChirps = [...this.state.chirps, chirp];
+    const data = JSON.stringify(newChirps);
+    localStorage.setItem('chirps', data)
     this.setState({
-      chirps: [...this.state.chirps, chirp]
+      chirps: newChirps
     });
-  };
 
+  };
   componentDidMount() {
     const chirps = [
       {
