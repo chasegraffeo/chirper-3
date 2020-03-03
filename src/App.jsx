@@ -6,10 +6,6 @@ import Col from "react-bootstrap/Col";
 import Spinner from "react-bootstrap/Spinner";
 import ChirpForms from "./ChirpForms";
 import ChirpTimeline from "./ChirpTimeline";
-let path = require('path');
-let fs = require('fs');
-let request = require('request');
-let dataPath = path.join(__dirname, './chirp.json');
 
 
 class App extends React.Component { 
@@ -26,7 +22,6 @@ class App extends React.Component {
       chirps: newChirps
     });
 
-    fs.writeFile(dataPath, JSON.stringify(chirp)) 
   };
 
   
