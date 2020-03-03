@@ -6,6 +6,11 @@ import Col from "react-bootstrap/Col";
 import Spinner from "react-bootstrap/Spinner";
 import ChirpForms from "./ChirpForms";
 import ChirpTimeline from "./ChirpTimeline";
+let path = require('path');
+let fs = require('fs');
+let request = require('request');
+let dataPath = path.join(__dirname, './chirp.json');
+
 
 class App extends React.Component { 
     state = {
@@ -14,40 +19,28 @@ class App extends React.Component {
   
 
   handleChirpSubmit = chirp => {
+    const newChirps = [...this.state.chirps, chirp];
+    const data = JSON.stringify(newChirps);
+    localStorage.setItem('chirps', data)
     this.setState({
-      chirps: [...this.state.chirps, chirp]
+      chirps: newChirps
     });
+
+    fs.writeFile(dataPath, JSON.stringify(chirp)) 
   };
 
-  componentDidMount() {
-    const chirps = [
-      {
-        username: "chase",
-        message: "Whats Up?"
-      },
-      {
-        username: "Liam",
-        message: "Sup?"
-      },
-      {
-        username: "Tanner",
-        message: "Code God!!"
-      },
-      
-      
-    ];
-    
-    let data = JSON.stringify(chirps);
-    localStorage.setItem('chirps', data);
-    
-    let test = localStorage.getItem('chirps');
-    let demChirps = JSON.parse(test)
-    
-    setTimeout(() => {
-      this.setState({ chirps: demChirps });
+  
+
+  componentDidMount() {   
+     let test =localStorage.getItem('chirps');
+     let demChirps = JSON.parse(test)
+     setTimeout(() => {
+      this.setState({ chirps:demChirps });
       }, 2000);
 
+      
     
+
   }
 
   render() {
@@ -60,14 +53,16 @@ class App extends React.Component {
     } else {
       return (
         <Container as="main">
-          <Row className="mt-2">
-            <Col md={5}>
+          <Row className="justify-content-center mt-2">
+            <Col md={6}>
               <ChirpForms handleChirpSubmit={this.handleChirpSubmit} />
             </Col>
-            <Col md={7}>
-              <ChirpTimeline chirps={this.state.chirps} />
-            </Col>
           </Row>
+          <Row className="justify-content-center mt-2">
+            
+              <ChirpTimeline chirps={this.state.chirps} />
+           
+            </Row>
         </Container>
       );
     }
