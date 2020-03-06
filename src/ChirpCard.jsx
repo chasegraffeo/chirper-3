@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 const ChirpCard = props => {
   return (
     <Col md={8}>
-    <Card className="my-2 shadow" bg="primary" >
+    <Card className="my-2 shadow" bg="warning" >
     <Card.Header><FaRebel></FaRebel>{props.chirp.username}:</Card.Header>
     <Card.Body>
       <Card.Text as="div">
