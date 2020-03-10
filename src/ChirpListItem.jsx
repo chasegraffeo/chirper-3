@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 
 
-const ChirpCard = props => {
+const ChirpListItem = props => {
   return (
     <Col md={8}>
     <Card className="my-2 shadow" bg="warning" >
@@ -23,7 +23,7 @@ const ChirpCard = props => {
   </Col>
   );
 };
-export default ChirpCard
+export default ChirpListItem
 
 {/* <ListGroup.Item
      
